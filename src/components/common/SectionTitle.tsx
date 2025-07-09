@@ -4,24 +4,34 @@ interface SectionTitleProps {
   title: string;
   subtitle?: string;
   centered?: boolean;
+  titleClassName?: string;
+  subtitleClassName?: string;
 }
 
-const SectionTitle = ({ title, subtitle, centered = false }: SectionTitleProps) => {
+const SectionTitle = ({
+  title,
+  subtitle,
+  centered = false,
+  titleClassName = '',
+  subtitleClassName = '',
+}: SectionTitleProps) => {
   return (
     <div className={`mb-12 ${centered ? 'text-center' : ''}`}>
-      <motion.h2 
-        className={`text-3xl md:text-4xl font-bold relative inline-block ${centered ? 'after:left-1/2 after:-translate-x-1/2' : ''}`}
+      <motion.h2
+        className={`text-4xl md:text-5xl font-bold relative inline-block ${
+          centered ? 'after:left-1/2 after:-translate-x-1/2' : ''
+        } ${titleClassName}`}
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
         {title}
-        <span className="absolute -bottom-3 left-0 h-1 w-12 bg-primary-600"></span>
       </motion.h2>
       {subtitle && (
-        <motion.p 
-          className="mt-6 text-secondary-600 max-w-2xl"
+        <motion.p
+          className={`mt-6 max-w-4xl text-lg md:text-xl ${subtitleClassName}`}
+
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

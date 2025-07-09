@@ -1,89 +1,127 @@
 import { Link } from 'react-router-dom';
-import { Instagram, Facebook, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
+import { Instagram, MapPin, Mail, Phone } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="bg-secondary-950 text-white pt-16 pb-8">
-      <div className="container-custom">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-          <div>
-            <div className="flex items-center mb-6">
-              <img 
-                src="https://images.pexels.com/photos/5119838/pexels-photo-5119838.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
-                alt="MITS Motorsports Logo" 
-                className="h-12 w-auto mr-3"
+    <footer className="bg-black text-white pt-1 sm:pt-2 md:pt-3 pb-1 sm:pb-2 md:pb-3 opacity-100 isolate border-t border-b border-white">
+      <div className="container-custom px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mb-3 sm:mb-4 md:mb-6">
+          <div className="flex justify-center items-center h-full border-r border-white md:border-r-0">
+            <div className="flex flex-col items-center">
+              <img
+                src="/faviconLogo (1).png"
+                alt="MITS Motorsports Logo"
+                className="h-40 sm:h-48 md:h-56 lg:h-64 w-auto"
               />
-              <span className="font-bold text-2xl text-white">MITS Motorsports</span>
-            </div>
-            <p className="text-secondary-300 mb-6">
-              Building innovation through engineering excellence. MITS Motorsports is dedicated to pushing the boundaries of automotive design and performance.
-            </p>
-            <div className="flex space-x-4">
-              <a href="#" className="text-white hover:text-primary-500 transition-colors">
-                <Instagram size={20} />
-              </a>
-              <a href="#" className="text-white hover:text-primary-500 transition-colors">
-                <Facebook size={20} />
-              </a>
-              <a href="#" className="text-white hover:text-primary-500 transition-colors">
-                <Linkedin size={20} />
-              </a>
             </div>
           </div>
 
-          <div>
-            <h3 className="text-xl font-semibold mb-6">Quick Links</h3>
-            <ul className="space-y-3">
+          <div className="border-r border-white sm:border-r-0 md:border-r">
+            <h3 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6">Quick Links</h3>
+            <ul className="space-y-2 sm:space-y-3">
               <li>
-                <Link to="/" className="text-secondary-300 hover:text-white transition-colors">Home</Link>
+                <Link to="/" className="text-secondary-300 hover:text-white transition-colors text-sm sm:text-base">
+                  Home
+                </Link>
               </li>
               <li>
-                <Link to="/projects/aethon" className="text-secondary-300 hover:text-white transition-colors">Aethon V4</Link>
+                <Link to="/projects/aethon" className="text-secondary-300 hover:text-white transition-colors text-sm sm:text-base">
+                  Aethon V4
+                </Link>
               </li>
               <li>
-                <Link to="/projects/ebaja" className="text-secondary-300 hover:text-white transition-colors">EBaja</Link>
+                <Link to="/projects/ebaja" className="text-secondary-300 hover:text-white transition-colors text-sm sm:text-base">
+                  EBaja
+                </Link>
               </li>
               <li>
-                <Link to="/alumni" className="text-secondary-300 hover:text-white transition-colors">Alumni</Link>
+                <Link to="/alumni" className="text-secondary-300 hover:text-white transition-colors text-sm sm:text-base">
+                  Alumni
+                </Link>
               </li>
             </ul>
           </div>
 
-          <div>
-            <h3 className="text-xl font-semibold mb-6">Contact Us</h3>
-            <ul className="space-y-4">
+          <div className="border-r border-white">
+            <h3 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6">Contact Us</h3>
+            <ul className="space-y-3 sm:space-y-4">
               <li className="flex items-start">
-                <MapPin className="mr-3 h-5 w-5 text-primary-500 flex-shrink-0 mt-0.5" />
-                <span className="text-secondary-300">
-                  MITS Engineering College Campus, Kochi, Kerala, India
+                <MapPin className="mr-2 sm:mr-3 w-4 sm:w-5 h-4 sm:h-5 text-primary-500 flex-shrink-0 mt-0.5" />
+                <span className="text-secondary-300 text-sm sm:text-base">
+                  Muthoot Institute Of Technology And Science, Kochi, Kerala, India
                 </span>
               </li>
               <li className="flex items-center">
-                <Mail className="mr-3 h-5 w-5 text-primary-500 flex-shrink-0" />
-                <a href="mailto:info@mitsmotorsports.edu" className="text-secondary-300 hover:text-white transition-colors">
+                <Mail className="mr-2 sm:mr-3 w-4 sm:w-5 h-4 sm:h-5 text-primary-500 flex-shrink-0" />
+                <a
+                  href="mailto:info@mitsmotorsports.edu"
+                  className="text-secondary-300 hover:text-white transition-colors text-sm sm:text-base"
+                >
                   info@mitsmotorsports.edu
                 </a>
               </li>
               <li className="flex items-center">
-                <Phone className="mr-3 h-5 w-5 text-primary-500 flex-shrink-0" />
-                <a href="tel:+919876543210" className="text-secondary-300 hover:text-white transition-colors">
-                  +91 987 654 3210
+                <Phone className="mr-2 sm:mr-3 w-4 sm:w-5 h-4 sm:h-5 text-primary-500 flex-shrink-0" />
+                <a
+                  href="tel:+91 97783 53970"
+                  className="text-secondary-300 hover:text-white transition-colors text-sm sm:text-base"
+                >
+                  +91 97783 53970
                 </a>
               </li>
             </ul>
           </div>
-        </div>
 
-        <div className="border-t border-secondary-800 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-secondary-400 text-sm mb-4 md:mb-0">
-              © {new Date().getFullYear()} MITS Motorsports. All rights reserved.
-            </p>
-            <div className="text-secondary-400 text-sm">
-              <a href="#" className="hover:text-white transition-colors mr-6">Privacy Policy</a>
-              <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+          <div>
+            <h3 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6">Our Location</h3>
+            <div className="w-full max-w-[10rem] sm:max-w-[12rem] md:max-w-[14rem] aspect-square rounded-lg overflow-hidden shadow-md">
+           <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d245.60243022878657!2d76.40851814354461!3d9.963972635525636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0874de563bc58b%3A0xde7ecbfa110cfbda!2sMuthoot%20Institute%20of%20Technology%20%26%20Science!5e0!3m2!1sen!2sin!4v1752044708058!5m2!1sen!2sin"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen={true}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="MITS Engineering College Location"
+            />
+
             </div>
           </div>
+        </div>
+
+        <div className="flex justify-center gap-4 pb-3">
+          <a
+            href="https://www.instagram.com/mits_motorsports/"
+            className="relative group transition-colors"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div className="p-2 sm:p-2.5 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300">
+              <Instagram className="text-white group-hover:text-white/90 w-5 sm:w-6 md:w-7 h-5 sm:h-6 md:h-7" />
+            </div>
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-yellow-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          </a>
+          <a
+            href="mailto:info@mitsmotorsports.edu"
+            className="relative group transition-colors"
+          >
+            <div className="p-2 sm:p-2.5 rounded-full bg-red-600 shadow-lg group-hover:bg-red-700 group-hover:shadow-xl group-hover:scale-110 transition-all duration-300">
+              <Mail className="text-white group-hover:text-white/90 w-5 sm:w-6 md:w-7 h-5 sm:h-6 md:h-7" />
+            </div>
+            <div className="absolute inset-0 rounded-full bg-red-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          </a>
+          <a
+            href="https://maps.app.goo.gl/zgiep9rD8viKp1KU9"
+            className="relative group transition-colors"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div className="p-2 sm:p-2.5 rounded-full bg-blue-600 shadow-lg group-hover:bg-blue-700 group-hover:shadow-xl group-hover:scale-110 transition-all duration-300">
+              <MapPin className="text-white group-hover:text-white/90 w-5 sm:w-6 md:w-7 h-5 sm:h-6 md:h-7" />
+            </div>
+            <div className="absolute inset-0 rounded-full bg-blue-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          </a>
         </div>
       </div>
     </footer>

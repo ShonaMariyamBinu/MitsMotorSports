@@ -116,7 +116,7 @@ const ProjectGallery: React.FC = () => {
     },
     {
       id: 2,
-      title: "FTo the Track",
+      title: "To the Track",
       image: fkdcImg2,
       fontColor: "text-black",
       margin: "mx-2 my-6",

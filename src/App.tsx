@@ -34,9 +34,18 @@ function AppContent() {
     setIsInitialLoad(false);
   }, [location.pathname]);
 
+  // Scroll to top on route change
+  useEffect(() => {
+    // Only scroll to top when animation is not showing
+    if (!showAnimation) {
+      window.scrollTo(0, 0);
+    }
+  }, [location.pathname, showAnimation]);
+
   const handleAnimationComplete = () => {
     setShowAnimation(false);
-    // Don't navigate anywhere - just hide the animation and show the homepage
+    // Scroll to top after animation completes on homepage
+    window.scrollTo(0, 0);
   };
 
   // Don't render anything during initial load check

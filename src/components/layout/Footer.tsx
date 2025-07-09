@@ -75,18 +75,28 @@ const Footer = () => {
           <div className="flex justify-center">
             <div>
               <h3 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6">Our Location</h3>
-              <div className="w-full max-w-[10rem] sm:max-w-[12rem] md:max-w-[14rem] aspect-square rounded-lg overflow-hidden shadow-md mx-auto">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d245.60243022878657!2d76.40851814354461!3d9.963972635525636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0874de563bc58b%3A0xde7ecbfa110cfbda!2sMuthoot%20Institute%20of%20Technology%20%26%20Science!5e0!3m2!1sen!2sin!4v1752044708058!5m2!1sen!2sin"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen={true}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="MITS Engineering College Location"
-                />
-              </div>
+              <div className="relative w-full max-w-[10rem] sm:max-w-[12rem] md:max-w-[14rem] aspect-square rounded-lg overflow-hidden shadow-md mx-auto">
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d245.60243022878657!2d76.40851814354461!3d9.963972635525636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0874de563bc58b%3A0xde7ecbfa110cfbda!2sMuthoot%20Institute%20of%20Technology%20%26%20Science!5e0!3m2!1sen!2sin!4v1752044708058!5m2!1sen!2sin"
+    width="100%"
+    height="100%"
+    style={{ border: 0 }}
+    allowFullScreen={true}
+    loading="lazy"
+    referrerPolicy="no-referrer-when-downgrade"
+    title="MITS Engineering College Location"
+  />
+  <a
+    href="https://maps.app.goo.gl/zgiep9rD8viKp1KU9"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="absolute inset-0"
+    aria-label="Open MITS on Google Maps"
+  >
+    <span className="sr-only">Open map in Google Maps</span>
+  </a>
+</div>
+
             </div>
           </div>
         </div>
@@ -104,7 +114,7 @@ const Footer = () => {
             <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-yellow-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </a>
           <a
-            href="mailto:info@mitsmotorsports.edu"
+            href="mailto:motorsportsmits@gmail.com"
             className="relative group transition-colors"
           >
             <div className="p-2 sm:p-2.5 rounded-full bg-red-600 shadow-lg group-hover:bg-red-700 group-hover:shadow-xl group-hover:scale-110 transition-all duration-300">

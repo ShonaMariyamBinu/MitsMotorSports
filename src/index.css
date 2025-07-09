@@ -2,42 +2,59 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  html {
-    scroll-behavior: smooth;
-  }
-  
-  body {
-    @apply font-sans text-secondary-950 bg-white;
-  }
-  
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-semibold tracking-tight leading-tight;
-  }
-  
-  p {
-    @apply leading-relaxed;
-  }
+.alumni-card {
+  background-color: rgb(0, 0, 0);
+  border: 1.5px solid #7f1d1d;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+  padding: 1rem;
+  width: 220px;
+  flex-shrink: 0;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  cursor: default;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-@layer components {
-  .container-custom {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
-  }
-  
-  .btn {
-    @apply inline-flex items-center justify-center px-6 py-3 rounded-md font-medium transition-all duration-200;
-  }
-  
-  .btn-primary {
-    @apply bg-primary-600 text-white hover:bg-primary-700 focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
-  }
-  
-  .btn-secondary {
-    @apply bg-white text-primary-600 border border-primary-600 hover:bg-primary-50 focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
-  }
-  
-  .section-title {
-    @apply text-3xl sm:text-4xl font-bold mb-6 relative inline-block after:content-[''] after:absolute after:-bottom-2 after:left-0 after:w-1/2 after:h-1 after:bg-primary-600;
-  }
+.alumni-card:hover {
+  border-color: #b91c1c;
+  box-shadow: 0 0 14px #b91c1c;
+  transform: translateY(-6px);
+}
+
+.alumni-image {
+  width: 190px;
+  height: 190px;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.8);
+  margin-bottom: 0.75rem;
+  border: 2px solid #2a2a2a;
+  transition: border-color 0.3s ease;
+}
+
+.alumni-card:hover .alumni-image {
+  border-color: #b91c1c;
+  box-shadow: 0 0 15px #b91c1c;
+}
+
+.alumni-name {
+  color: #eee;
+  font-weight: 600;
+  font-size: 1.15rem;
+  text-align: center;
+  position: relative;
+}
+
+.alumni-name::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 3px;
+  margin: 6px auto 0;
+  background: #b91c1c;
+  border-radius: 2px;
+  opacity: 0.7;
+  box-shadow: 0 0 6px #b91c1c;
 }

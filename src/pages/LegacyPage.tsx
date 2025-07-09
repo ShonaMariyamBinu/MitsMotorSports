@@ -1,116 +1,295 @@
-import React from 'react';
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
-const LegacyPage = () => {
+// Import your background video file here
+import backgroundVideo from "../assets/motor.mp4"; 
+
+// Original Carousel 1 Images
+import a1 from "../assets/a1.jpg";
+import a2 from "../assets/a2.jpg";
+import a3 from "../assets/a3.jpg";
+
+// New Images for Carousel 2
+import c1 from "../assets/c1.jpg";
+import c2 from "../assets/c2.jpg";
+import c3 from "../assets/c3.jpg";
+
+export default function EBajaPage() {
+  const [titleVisible, setTitleVisible] = useState(true);
+
+  // State for the first carousel (FKDC 2023)
+  const images2023 = [a1, a2, a3];
+  const [centerIndex2023, setCenterIndex2023] = useState(0);
+
+  // State for the second carousel (GKDC 2025)
+  const images2025 = [c1, c2, c3];
+  const [centerIndex2025, setCenterIndex2025] = useState(0);
+
+  useEffect(() => {
+    const onScroll = () =>
+      setTitleVisible(window.scrollY < window.innerHeight * 0.4);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Controls for the first carousel
+  const rotateLeft2023 = () =>
+    setCenterIndex2023((prev) => (prev - 1 + images2023.length) % images2023.length);
+  const rotateRight2023 = () =>
+    setCenterIndex2023((prev) => (prev + 1) % images2023.length);
+  const getImageAt2023 = (offset: number) =>
+    images2023[(centerIndex2023 + offset + images2023.length) % images2023.length];
+
+  // Controls for the second carousel
+  const rotateLeft2025 = () =>
+    setCenterIndex2025((prev) => (prev - 1 + images2025.length) % images2025.length);
+  const rotateRight2025 = () =>
+    setCenterIndex2025((prev) => (prev + 1) % images2025.length);
+  const getImageAt2025 = (offset: number) =>
+    images2025[(centerIndex2025 + offset + images2025.length) % images2025.length];
+
   return (
-    <div className="container mx-auto px-4 py-8">
-      {/* Hero Image */}
-      <div className="mb-8">
-        <img
-          src="/images/legacy-hero.jpg"
-          alt="MITS Motorsports Legacy"
-          className="w-full h-64 object-cover rounded-lg shadow-md md:h-96"
-        />
-      </div>
+    <div style={{ position: "relative", minHeight: "100vh", overflowX: "hidden" }}>
+      <video
+        autoPlay
+        loop
+        muted
+        style={{
+          position: "fixed",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          zIndex: -2,
+        }}
+        src={backgroundVideo}
+      />
+      
+      <div
+        style={{
+          position: 'fixed',
+          inset: 0,
+          backgroundColor: 'rgba(0, 0, 0, 0.7)',
+          zIndex: -1,
+        }}
+      ></div>
 
-      {/* Heading */}
-      <h1
-        className="text-4xl font-bold text-[#7f1d1d] mb-6"
-        style={{ fontFamily: "'Poppins', sans-serif" }}
+      {/* Title container no longer takes up the full screen height */}
+      <div
+        style={{
+          textAlign: "center",
+          paddingTop: '48vh', // Pushes the title down from the top
+          paddingBottom: '1vh', // Creates space between title and timeline
+          opacity: titleVisible ? 1 : 0,
+          transition: "opacity 0.8s ease",
+        }}
       >
-        Our Legacy
-      </h1>
-
-      {/* Introduction */}
-      <p className="text-lg text-gray-700 mb-6">
-        MITS Motorsports has a rich history of innovation and excellence in automotive engineering. For over a decade, our team has pushed the boundaries of technology, building vehicles that have competed on national and international stages. Our legacy is built on dedication, teamwork, and a passion for engineering excellence.
-      </p>
-
-      {/* Achievements Section */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-        <div className="bg-grey p-6 rounded-lg shadow-md">
-          <h2 className="text-2xl font-semibold text-[#7f1d1d] mb-2">Past Achievements</h2>
-          <p className="text-gray-600">
-            From winning national competitions like Formula Bharat to achieving top ranks in international events, our past projects have set benchmarks in the industry. Our vehicles have been recognized for their innovative design and performance.
-          </p>
-        </div>
-        <div className="bg-grey p-6 rounded-lg shadow-md">
-          <h2 className="text-2xl font-semibold text-[#7f1d1d] mb-2">Milestones</h2>
-          <p className="text-gray-600">
-            Key moments in our journey include the launch of iconic vehicles like Aethon V4 and EBaja, which showcased cutting-edge technology and engineering prowess.
-          </p>
-        </div>
+        <h1
+  style={{
+    fontSize: "10vw",
+    fontWeight: "bold",
+    // The main color property is removed from here
+    textShadow: 
+      "-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, 5px 5px 15px rgba(0, 0, 0, 1)",
+  }}
+>
+  <span style={{ color: "white" }}>Our</span>{' '}
+  <span style={{ color: "#7f1d1d" }}>Legacy</span>
+</h1>
       </div>
 
-      {/* History Timeline */}
-      <div className="mb-8">
-        <h2
-          className="text-3xl font-bold text-[#7f1d1d] mb-4"
-          style={{ fontFamily: "'Poppins', sans-serif" }}
+      {/* Timeline container now has its negative margin removed */}
+      <div style={{ position: "relative", height: "160px" }}>
+        <div
+          style={{
+            position: "absolute",
+            top: "35px",
+            left: "50%",
+            width: "70%",
+            height: "100px",
+            transform: "translateX(-50%)",
+            borderTop: "4px solid red",
+            borderRadius: "0 0 100% 100%",
+            zIndex: 1,
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            top: "40px",
+            left: "50%",
+            width: "70%",
+            display: "flex",
+            justifyContent: "space-between",
+            transform: "translateX(-50%)",
+            zIndex: 2,
+          }}
         >
-          Our History
-        </h2>
-        <div className="space-y-6">
-          <div className="bg-grey p-6 rounded-lg shadow-md">
-            <h3 className="text-xl font-semibold text-[#7f1d1d] mb-2">2010: Founding of MITS Motorsports</h3>
-            <p className="text-gray-600">
-              MITS Motorsports was established with a vision to innovate in the field of automotive engineering, starting with our first prototype vehicle.
-            </p>
-          </div>
-          <div className="bg-grey p-6 rounded-lg shadow-md">
-            <h3 className="text-xl font-semibold text-[#7f1d1d] mb-2">2015: First National Win</h3>
-            <p className="text-gray-600">
-              Our team secured its first major victory in a national competition, marking a significant milestone in our journey.
-            </p>
-          </div>
-          <div className="bg-grey p-6 rounded-lg shadow-md">
-            <h3 className="text-xl font-semibold text-[#7f1d1d] mb-2">2020: International Recognition</h3>
-            <p className="text-gray-600">
-              MITS Motorsports gained international acclaim for the Aethon V4, competing against top teams worldwide.
-            </p>
-          </div>
-          <div className="bg-grey p-6 rounded-lg shadow-md">
-            <h3 className="text-xl font-semibold text-[#7f1d1d] mb-2">2025: Continued Innovation</h3>
-            <p className="text-gray-600">
-              As of today, July 9, 2025, we continue to innovate with projects like EBaja, pushing the limits of electric vehicle technology.
-            </p>
-          </div>
+          {["2023", "2025"].map((y) => {
+            const scrollTo = y === "2023" ? "2024" : "2023";
+            return (
+              <div
+                key={y}
+                onClick={() =>
+                  document.getElementById(scrollTo)?.scrollIntoView({ behavior: "smooth" })
+                }
+                style={{ cursor: "pointer", textAlign: "center" }}
+              >
+                <div
+                  style={{
+                    padding: "18px 32px",
+                    background: "rgba(0,0,0,0.4)",
+                    color: "#fff",
+                    borderRadius: "28px",
+                    fontWeight: 900,
+                    fontSize: "1.8rem",
+                    border: "2px solid #ff4d4d",
+                    transition: "box-shadow 0.3s ease",
+                  }}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.boxShadow = "0 0 20px rgba(255,77,77,0.8)")
+                  }
+                  onMouseLeave={(e) => (e.currentTarget.style.boxShadow = "none")}
+                >
+                  {y}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
 
-      {/* Team Legacy */}
-      <div>
-        <h2
-          className="text-3xl font-bold text-[#7f1d1d] mb-4"
-          style={{ fontFamily: "'Poppins', sans-serif" }}
+      {/* 2024 Section */}
+      <section
+        id="2024"
+        style={{
+          padding: "2rem",
+          color: "#fff",
+          marginBottom: "4rem",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "900px",
+            width: "100%",
+            padding: "2rem",
+            background: "rgba(0,0,0,0.6)",
+            border: "2px solid #ff4d4d",
+            borderRadius: "12px",
+            boxShadow: "0 0 25px rgba(255,0,0,0.5)",
+          }}
         >
-          Team Legacy
-        </h2>
-        <p className="text-lg text-gray-700 mb-6">
-          Our alumni have gone on to lead in the automotive industry, carrying forward the skills and passion developed at MITS Motorsports. Their contributions continue to inspire our current team.
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-grey p-6 rounded-lg shadow-md">
-            <h3 className="text-xl font-semibold text-[#7f1d1d] mb-2">Innovative Designs</h3>
-            <p className="text-gray-600">
-              Our team has pioneered lightweight chassis designs and advanced aerodynamics, setting industry standards.
-            </p>
+          <h2 style={{ textAlign: "center", fontSize: "3.2rem", fontWeight: 900, color: "red", marginBottom: "1rem" }}>
+            FKDC 2023 <span style={{ fontSize: "2rem", color: "#fff", background: "transparent" }}>Season 7</span>
+          </h2>
+          <p style={{ textAlign: "center", fontSize: "1.4rem", marginBottom: "2rem", fontWeight: "normal" }}>
+            Held at <strong>Kari Motorsports, Coimbatore</strong>
+          </p>
+          <div style={{ textAlign: "center", marginBottom: "1.5rem" }}>
+            <button
+              style={{
+                backgroundColor: "red",
+                border: "none",
+                borderRadius: "30px",
+                color: "#fff",
+                padding: "1rem 3rem",
+                fontSize: "1.8rem",
+                fontWeight: "bold",
+                cursor: "pointer",
+                boxShadow: "0 0 15px rgba(255,0,0,0.7)",
+                transition: "background-color 0.3s ease",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#cc0000")}
+              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "red")}
+            >
+              AIR 1
+            </button>
           </div>
-          <div className="bg-grey p-6 rounded-lg shadow-md">
-            <h3 className="text-xl font-semibold text-[#7f1d1d] mb-2">Collaborative Spirit</h3>
-            <p className="text-gray-600">
-              Collaboration across disciplines has been key to our success, fostering a culture of innovation and teamwork.
-            </p>
+          <div style={{ display: "flex", justifyContent: "space-between", gap: "1rem", flexWrap: "wrap" }}>
+            <div style={{ flex: "1 1 45%", background: "transparent", color: "white", padding: "1.5rem", borderRadius: "10px", fontSize: "1.2rem", fontWeight: 600, border: "2px solid red", boxShadow: "0 0 15px rgba(255,0,0,0.5)", textAlign: "center", display: "flex", justifyContent: "center", alignItems: "center", minHeight: "80px" }}>
+              <span style={{ fontWeight: "bold", textTransform: "uppercase", marginRight: "6px", color: "red" }}>
+                First Prize
+              </span>
+              Endurance, Acceleration, Cost Evaluation
+            </div>
+            <div style={{ flex: "1 1 45%", background: "transparent", color: "white", padding: "1.5rem", borderRadius: "10px", fontSize: "1.2rem", fontWeight: 600, border: "2px solid red", boxShadow: "0 0 15px rgba(255,0,0,0.5)", textAlign: "center", display: "flex", justifyContent: "center", alignItems: "center", minHeight: "80px" }}>
+              <span style={{ fontWeight: "bold", textTransform: "uppercase", marginRight: "6px", color: "red" }}>
+                Second Prize
+              </span>
+              Autocross
+            </div>
           </div>
-          <div className="bg-grey p-6 rounded-lg shadow-md">
-            <h3 className="text-xl font-semibold text-[#7f1d1d] mb-2">Sustainable Engineering</h3>
-            <p className="text-gray-600">
-              Recent projects focus on sustainability, with electric and hybrid vehicles leading the way in eco-friendly design.
-            </p>
+          <div className="relative w-full max-w-5xl h-[500px] flex items-center justify-center mx-auto px-4" style={{ position: "relative", marginTop: "-5rem" }}>
+            <motion.div onClick={rotateLeft2023} whileTap={{ scale: 0.9 }} style={{ position: "absolute", left: "0", zIndex: 20, background: "red", borderRadius: "50%", padding: "1rem", fontSize: "1.5rem", fontWeight: "bold", color: "#fff", cursor: "pointer", boxShadow: "0 0 20px rgba(255,0,0,0.8)", userSelect: "none" }}>◀</motion.div>
+            <motion.img src={getImageAt2023(-1)} style={{ width: "300px", position: "absolute", left: "10%", opacity: 0.5, transform: "scale(0.9)", borderRadius: "12px", boxShadow: "0 0 15px rgba(255,0,0,0.3)" }} key={`left-${centerIndex2023}`} />
+            <motion.img src={getImageAt2023(0)} style={{ width: "400px", borderRadius: "16px", boxShadow: "0 0 25px rgba(255,0,0,0.6)", zIndex: 10 }} key={`center-${centerIndex2023}`} initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6 }} />
+            <motion.img src={getImageAt2023(1)} style={{ width: "300px", position: "absolute", right: "10%", opacity: 0.5, transform: "scale(0.9)", borderRadius: "12px", boxShadow: "0 0 15px rgba(255,0,0,0.3)" }} key={`right-${centerIndex2023}`} />
+            <motion.div onClick={rotateRight2023} whileTap={{ scale: 0.9 }} style={{ position: "absolute", right: "0", zIndex: 20, background: "red", borderRadius: "50%", padding: "1rem", fontSize: "1.5rem", fontWeight: "bold", color: "#fff", cursor: "pointer", boxShadow: "0 0 20px rgba(255,0,0,0.8)", userSelect: "none" }}>▶</motion.div>
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* 2025 Section */}
+      <section
+        id="2023"
+        style={{
+          padding: "2rem",
+          color: "#fff",
+          marginBottom: "4rem",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "900px",
+            width: "100%",
+            padding: "2rem",
+            background: "rgba(0,0,0,0.6)",
+            border: "2px solid #ff4d4d",
+            borderRadius: "12px",
+            boxShadow: "0 0 25px rgba(255,0,0,0.5)",
+          }}
+        >
+          <h2 style={{ textAlign: "center", fontSize: "3.2rem", fontWeight: 900, color: "red", marginBottom: "1rem" }}>
+            GKDC 2025 <span style={{ fontSize: "2rem", color: "#fff", background: "transparent" }}>Season 13</span>
+          </h2>
+          <p style={{ textAlign: "center", fontSize: "1.4rem", marginBottom: "2rem", fontWeight: "normal" }}>
+            Held at <strong>Kari Motorsports, Coimbatore</strong>
+          </p>
+          <div style={{ textAlign: "center", marginBottom: "1.5rem" }}>
+            <button
+              style={{
+                backgroundColor: "red",
+                border: "none",
+                borderRadius: "30px",
+                color: "#fff",
+                padding: "1rem 3rem",
+                fontSize: "1.8rem",
+                fontWeight: "bold",
+                cursor: "pointer",
+                boxShadow: "0 0 15px rgba(255,0,0,0.7)",
+                transition: "background-color 0.3s ease",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#cc0000")}
+              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "red")}
+            >
+              AIR 7
+            </button>
+          </div>
+          <div className="relative w-full max-w-5xl h-[500px] flex items-center justify-center mx-auto px-4" style={{ position: "relative", marginTop: "-5rem" }}>
+            <motion.div onClick={rotateLeft2025} whileTap={{ scale: 0.9 }} style={{ position: "absolute", left: "0", zIndex: 20, background: "red", borderRadius: "50%", padding: "1rem", fontSize: "1.5rem", fontWeight: "bold", color: "#fff", cursor: "pointer", boxShadow: "0 0 20px rgba(255,0,0,0.8)", userSelect: "none" }}>◀</motion.div>
+            <motion.img src={getImageAt2025(-1)} style={{ width: "300px", position: "absolute", left: "10%", opacity: 0.5, transform: "scale(0.9)", borderRadius: "12px", boxShadow: "0 0 15px rgba(255,0,0,0.3)" }} key={`left-${centerIndex2025}`} />
+            <motion.img src={getImageAt2025(0)} style={{ width: "400px", borderRadius: "16px", boxShadow: "0 0 25px rgba(255,0,0,0.6)", zIndex: 10 }} key={`center-${centerIndex2025}`} initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6 }} />
+            <motion.img src={getImageAt2025(1)} style={{ width: "300px", position: "absolute", right: "10%", opacity: 0.5, transform: "scale(0.9)", borderRadius: "12px", boxShadow: "0 0 15px rgba(255,0,0,0.3)" }} key={`right-${centerIndex2025}`} />
+            <motion.div onClick={rotateRight2025} whileTap={{ scale: 0.9 }} style={{ position: "absolute", right: "0", zIndex: 20, background: "red", borderRadius: "50%", padding: "1rem", fontSize: "1.5rem", fontWeight: "bold", color: "#fff", cursor: "pointer", boxShadow: "0 0 20px rgba(255,0,0,0.8)", userSelect: "none" }}>▶</motion.div>
+          </div>
+        </div>
+      </section>
     </div>
   );
-};
-
-export default LegacyPage;
+}

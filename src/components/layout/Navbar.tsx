@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Menu, X, ChevronDown } from 'lucide-react';
@@ -8,7 +8,10 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isProjectsOpen, setIsProjectsOpen] = useState(false);
   const location = useLocation();
+  const desktopDropdownRef = useRef<HTMLDivElement>(null);
+  const mobileDropdownRef = useRef<HTMLDivElement>(null);
 
+  // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -17,12 +20,28 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close menus on navigation
   useEffect(() => {
     setIsOpen(false);
+    setIsProjectsOpen(false);
   }, [location]);
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const isOutsideDesktop = !desktopDropdownRef.current || !desktopDropdownRef.current.contains(event.target as Node);
+      const isOutsideMobile = !mobileDropdownRef.current || !mobileDropdownRef.current.contains(event.target as Node);
+      if (isOutsideDesktop && isOutsideMobile && isProjectsOpen) {
+        setIsProjectsOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isProjectsOpen]);
 
   const navItems = [
     { name: 'Home', path: '/' },
+    { name: 'About', path: '/about' },
     {
       name: 'Projects',
       path: '#',
@@ -30,19 +49,28 @@ const Navbar = () => {
       items: [
         { name: 'Aethon V4', path: '/projects/aethon' },
         { name: 'EBaja', path: '/projects/ebaja' },
-      ]
+      ],
     },
+    { name: 'Project Gallery', path: '/gallery' },
+    { name: 'Legacy', path: '/legacy' },
     { name: 'Alumni', path: '/alumni' },
-    { name: 'Project Gallery', path: '/gallery' }
   ];
 
   return (
-    <header className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-transparent shadow-md py-2' : 'bg-transparent py-4'}`}>
-      <div className="container-custom">
+    <header className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white bg-opacity-10 shadow-md py-2' : 'bg-transparent py-4'}`}>
+      <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center">
             <img src="/faviconLogo (1).png" alt="Club Logo" className="h-10 w-auto mr-2" />
-            <span className="font-bold text-2xl" style={{ fontFamily: "'Montserrat', sans-serif", color: '#cc3333' }}>
+            <span
+              className="font-bold text-2xl"
+              style={{
+                fontFamily: "'Poppins', sans-serif",
+                background: 'linear-gradient(to right, #7f1d1d,rgb(13, 12, 12))',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+              }}
+            >
               MITS Motorsports
             </span>
           </Link>
@@ -51,45 +79,52 @@ const Navbar = () => {
           <nav className="hidden md:flex items-center space-x-1">
             {navItems.map((item) => (
               item.dropdown ? (
-                <div key={item.name} className="relative group">
+                <div key={item.name} className="relative">
                   <button
-                    onClick={() => setIsProjectsOpen(!isProjectsOpen)}
-                    className={`px-8 py-4 rounded-md font-medium flex items-center text-xl ${
-                      location.pathname.startsWith('/projects') && location.pathname !== '/projects/gallery'
-                        ? 'text-primary-600'
-                        : isScrolled ? 'text-secondary-900 hover:text-primary-600' : 'text-secondary-900 hover:text-primary-600'
-                    }`}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setIsProjectsOpen(!isProjectsOpen);
+                    }}
+                    className={`px-8 py-4 rounded-md font-medium flex items-center text-xl ${location.pathname.startsWith('/projects') && location.pathname !== '/gallery'
+                        ? 'text-[#7f1d1d]'
+                        : 'text-white hover:text-[#7f1d1d]'
+                      }`}
+                    style={{ fontFamily: "'Poppins', sans-serif" }}
                   >
                     {item.name}
-                    <ChevronDown className="ml-1 h-4 w-4" />
+                    <ChevronDown className={`ml-1 h-4 w-4 transition-transform ${isProjectsOpen ? 'rotate-180' : ''}`} />
                   </button>
-                  <div className="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                    <div className="py-1">
-                      {item.items.map((subItem) => (
-                        <Link
-                          key={subItem.name}
-                          to={subItem.path}
-                          className={`block px-4 py-2 text-sm ${
-                            location.pathname === subItem.path
-                              ? 'bg-primary-50 text-primary-600'
-                              : 'text-secondary-900 hover:bg-primary-50 hover:text-primary-600'
-                          }`}
-                        >
-                          {subItem.name}
-                        </Link>
-                      ))}
+                  {isProjectsOpen && (
+                    <div ref={desktopDropdownRef} className="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-black bg-opacity-50 z-50">
+                      <div className="py-1">
+                        {item.items.map((subItem) => (
+                          <Link
+                            key={subItem.name}
+                            to={subItem.path}
+                            onClick={() => setIsProjectsOpen(false)}
+                            className={`block px-4 py-2 text-sm ${location.pathname === subItem.path
+                                ? 'bg-[#7f1d1d] bg-opacity-20 text-[#7f1d1d]'
+                                : 'text-white hover:bg-[#7f1d1d] hover:bg-opacity-20 hover:text-[#7f1d1d]'
+                              }`}
+                            style={{ fontFamily: "'Poppins', sans-serif" }}
+                          >
+                            {subItem.name}
+                          </Link>
+                        ))}
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
               ) : (
                 <Link
                   key={item.name}
                   to={item.path}
-                  className={`px-4 py-2 rounded-md font-medium text-xl ${
-                    location.pathname === item.path
-                      ? 'text-primary-600'
-                      : isScrolled ? 'text-secondary-900 hover:text-primary-600' : 'text-secondary-900 hover:text-primary-600'
-                  }`}
+                  onClick={() => setIsProjectsOpen(false)}
+                  className={`px-4 py-2 rounded-md font-medium text-xl ${location.pathname === item.path
+                      ? 'text-[#7f1d1d]'
+                      : 'text-white hover:text-[#7f1d1d]'
+                    }`}
+                  style={{ fontFamily: "'Poppins', sans-serif" }}
                 >
                   {item.name}
                 </Link>
@@ -99,7 +134,7 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-secondary-900 hover:text-primary-600 focus:outline-none"
+            className="md:hidden text-white hover:text-[#7f1d1d] focus:outline-none"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -113,30 +148,38 @@ const Navbar = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
-          className="md:hidden bg-white border-t mt-2"
+          className="md:hidden bg-black bg-opacity-50 border-t mt-2 z-50"
         >
-          <div className="container-custom py-4 space-y-1">
+          <div className="container mx-auto px-4 py-4 space-y-1">
             {navItems.map((item) => (
               item.dropdown ? (
-                <div key={item.name}>
+                <div key={item.name} className="relative">
                   <button
-                    onClick={() => setIsProjectsOpen(!isProjectsOpen)}
-                    className="w-full flex justify-between items-center px-4 py-2 text-left font-medium text-secondary-900 hover:bg-primary-50 hover:text-primary-600 rounded-md"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setIsProjectsOpen(!isProjectsOpen);
+                    }}
+                    className="w-full flex justify-between items-center px-4 py-2 text-left font-medium text-white hover:bg-[#7f1d1d] hover:bg-opacity-20 hover:text-[#7f1d1d] rounded-md"
+                    style={{ fontFamily: "'Poppins', sans-serif" }}
                   >
                     {item.name}
                     <ChevronDown className={`h-4 w-4 transition-transform ${isProjectsOpen ? 'rotate-180' : ''}`} />
                   </button>
                   {isProjectsOpen && (
-                    <div className="pl-6 space-y-1 mt-1">
+                    <div ref={mobileDropdownRef} className="pl-6 space-y-1 mt-1 bg-black bg-opacity-50 rounded-md">
                       {item.items.map((subItem) => (
                         <Link
                           key={subItem.name}
                           to={subItem.path}
-                          className={`block px-4 py-2 rounded-m ${
-                            location.pathname === subItem.path
-                              ? 'bg-primary-50 text-primary-600'
-                              : 'text-secondary-900 hover:bg-primary-50 hover:text-primary-600'
-                          }`}
+                          onClick={() => {
+                            setIsProjectsOpen(false);
+                            setIsOpen(false);
+                          }}
+                          className={`block px-4 py-2 rounded-md ${location.pathname === subItem.path
+                              ? 'bg-[#7f1d1d] bg-opacity-20 text-[#7f1d1d]'
+                              : 'text-white hover:bg-[#7f1d1d] hover:bg-opacity-20 hover:text-[#7f1d1d]'
+                            }`}
+                          style={{ fontFamily: "'Poppins', sans-serif" }}
                         >
                           {subItem.name}
                         </Link>
@@ -148,11 +191,15 @@ const Navbar = () => {
                 <Link
                   key={item.name}
                   to={item.path}
-                  className={`block px-4 py-2 rounded-md font-medium ${
-                    location.pathname === item.path
-                      ? 'bg-primary-50 text-primary-600'
-                      : 'text-secondary-900 hover:bg-primary-50 hover:text-primary-600'
-                  }`}
+                  onClick={() => {
+                    setIsOpen(false);
+                    setIsProjectsOpen(false);
+                  }}
+                  className={`block px-4 py-2 rounded-md font-medium ${location.pathname === item.path
+                      ? 'bg-[#7f1d1d] bg-opacity-20 text-[#7f1d1d]'
+                      : 'text-white hover:bg-[#7f1d1d] hover:bg-opacity-20 hover:text-[#7f1d1d]'
+                    }`}
+                  style={{ fontFamily: "'Poppins', sans-serif" }}
                 >
                   {item.name}
                 </Link>

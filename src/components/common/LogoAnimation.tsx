@@ -21,7 +21,7 @@ const LogoAnimation = ({ onAnimationComplete }: LogoAnimationProps) => {
     // Just in case onended event does not fire (fallback)
     const fallbackTimeout = setTimeout(() => {
       if (onAnimationComplete) onAnimationComplete();
-    }, 2000); // match video length + small buffer
+    }, 1500); // match video length + small buffer
 
     return () => clearTimeout(fallbackTimeout);
   }, [onAnimationComplete]);

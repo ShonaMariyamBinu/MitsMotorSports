@@ -1,7 +1,6 @@
-import { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
-
 
 // Pages
 import HomePage from './pages/HomePage';
@@ -9,26 +8,41 @@ import AethonPage from './pages/AethonPage';
 import EBajaPage from './pages/EBajaPage';
 import AlumniPage from './pages/AlumniPage';
 import GalleryPage from './pages/ProjectGallery';
+import LegacyPage from './pages/LegacyPage';
+import AboutPage from './pages/AboutPage';
 
 // Components
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import LogoAnimation from './components/common/LogoAnimation';
 
-function App() {
-  const [showAnimation, setShowAnimation] = useState(true);
+function AppContent() {
+  const [showAnimation, setShowAnimation] = useState(false);
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
+  const location = useLocation();
   const navigate = useNavigate();
 
-  // Redirect to homepage after animation completes
+  // Check if this is the initial load and if we should show animation
+  useEffect(() => {
+    // Show animation every time user visits the homepage
+    if (location.pathname === '/') {
+      setShowAnimation(true);
+    } else {
+      setShowAnimation(false);
+    }
+    
+    setIsInitialLoad(false);
+  }, [location.pathname]);
+
   const handleAnimationComplete = () => {
     setShowAnimation(false);
-    navigate('/', { replace: true }); // Redirect to homepage, replace history entry
+    // Don't navigate anywhere - just hide the animation and show the homepage
   };
 
-  // On initial mount, ensure animation shows; redirect happens after animation
-  useEffect(() => {
-    setShowAnimation(true); // Ensure animation shows on load/refresh
-  }, []);
+  // Don't render anything during initial load check
+  if (isInitialLoad) {
+    return <div className="min-h-screen bg-gray-900" />;
+  }
 
   return (
     <div>
@@ -44,7 +58,9 @@ function App() {
                 <Route path="/projects/aethon" element={<AethonPage />} />
                 <Route path="/projects/ebaja" element={<EBajaPage />} />
                 <Route path="/alumni" element={<AlumniPage />} />
-                <Route path="gallery" element={<GalleryPage />} />
+                <Route path="/gallery" element={<GalleryPage />} />
+                <Route path="/legacy" element={<LegacyPage />} />
+                <Route path="/about" element={<AboutPage />} />
               </Routes>
             </AnimatePresence>
           </main>
@@ -55,11 +71,10 @@ function App() {
   );
 }
 
-// Wrap App with Router to provide routing context
-export default function AppWithRouter() {
+export default function App() {
   return (
     <Router>
-      <App />
+      <AppContent />
     </Router>
   );
 }

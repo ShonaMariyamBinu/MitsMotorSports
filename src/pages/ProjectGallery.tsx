@@ -11,12 +11,16 @@ import img6 from '../assets/img6.jpg';
 import img7 from '../assets/img7.jpg';
 import img8 from '../assets/img8.jpg';
 import img9 from '../assets/img9.jpg';
-// Placeholder imports for FKDC Season 7 images (replace with your images)
-import fkdcImg1 from '../assets/img1.jpg';
-import fkdcImg2 from '../assets/img1.jpg';
-import fkdcImg3 from '../assets/img1.jpg';
-import fkdcImg4 from '../assets/img1.jpg';
-import fkdcImg5 from '../assets/img1.jpg';
+import fkdcImg1 from '../assets/fkdc pic1.jpg';
+import fkdcImg2 from '../assets/fkdc pic2.jpg';
+import fkdcImg3 from '../assets/fkdc pic3.jpg';
+import fkdcImg4 from '../assets/fkdc pic4.jpg';
+import fkdcImg5 from '../assets/fkdc pic5.jpg';
+import fkdcImg6 from '../assets/fkdc pic6.jpg';
+import fkdcImg7 from '../assets/fkdc pic7.jpg';
+import fkdcImg8 from '../assets/fkdc pic8.jpg';
+import fkdcImg9 from '../assets/fkdc pic9.jpg';
+import fkdcImg10 from '../assets/fkdc pic10.jpg';
 
 const ProjectGallery: React.FC = () => {
   const [activeProject, setActiveProject] = useState<number | null>(null);
@@ -32,10 +36,10 @@ const ProjectGallery: React.FC = () => {
   ];
 
   const fkdcSliderImages = [
-    { id: 1, src: fkdcImg1, alt: 'FKDC Season 7 Work 1' },
-    { id: 2, src: fkdcImg2, alt: 'FKDC Season 7 Work 2' },
-    { id: 3, src: fkdcImg3, alt: 'FKDC Season 7 Work 3' },
-    { id: 4, src: fkdcImg4, alt: 'FKDC Season 7 Work 4' },
+    { id: 1, src: fkdcImg5, alt: 'FKDC Season 7 Work 5' },
+    { id: 2, src: fkdcImg6, alt: 'FKDC Season 7 Work 6' },
+    { id: 3, src: fkdcImg7, alt: 'FKDC Season 7 Work 7' },
+    { id: 4, src: fkdcImg8, alt: 'FKDC Season 7 Work 8' },
   ];
 
   const goKartProjects = [
@@ -103,50 +107,50 @@ const ProjectGallery: React.FC = () => {
       title: "FKDC Season 7 Project",
       image: fkdcImg1,
       featured: true,
-      fontColor: "text-white",
+      fontColor: "text-black",
       margin: "mx-2 my-6",
       verticalPosition: "top-8",
       icon: Trophy,
       description: "Formula Kart Design Excellence",
-      descriptionFontColor: "text-white",
+      descriptionFontColor: "text-black",
     },
     {
       id: 2,
-      title: "FKDC Team Effort",
+      title: "FTo the Track",
       image: fkdcImg2,
       fontColor: "text-black",
       margin: "mx-2 my-6",
       verticalPosition: "top-2.5",
       icon: Target,
-      description: "Collaborative Innovation",
+      description: "Hands that build, hands that push",
       descriptionFontColor: "text-black",
     },
     {
       id: 3,
-      title: "FKDC Race Day",
+      title: "Grid Ready",
       image: fkdcImg3,
       fontColor: "text-white",
       margin: "mx-2 my-6",
       verticalPosition: "top-6",
       icon: Flag,
-      description: "High-Speed Competition",
+      description: "Ready, steady, race!",
       descriptionFontColor: "text-white",
     },
     {
       id: 4,
-      title: "FKDC Engineering",
+      title: "Track Racer",
       image: fkdcImg4,
       fontColor: "text-white",
       margin: "mx-2 my-6",
       verticalPosition: "bottom-6",
       icon: Gauge,
-      description: "Precision Engineering",
+      description: "Test lap in motion",
       descriptionFontColor: "text-white",
     },
     {
       id: 5,
       title: "FKDC Passion",
-      image: fkdcImg5,
+      image: fkdcImg10,
       fontColor: "text-white",
       margin: "mx-2 my-6",
       verticalPosition: "bottom-6",
@@ -266,7 +270,7 @@ const ProjectGallery: React.FC = () => {
     <div className="bg-black text-white min-h-screen overflow-x-hidden relative font-['Poppins']">
       {/* Main content wrapper */}
       <div className="relative z-10 flex-grow flex flex-col">
-        {/* Top section with background image - NO geometric pattern here */}
+        {/* Top section with background image */}
         <motion.div
           className="min-h-screen px-2 sm:px-4 md:px-6 lg:px-8 py-28 sm:py-32 md:py-36 lg:py-44 flex flex-col justify-center bg-cover bg-center bg-no-repeat relative z-30"
           style={{ backgroundImage: `url(${GalleryBg})` }}
@@ -274,6 +278,7 @@ const ProjectGallery: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
+                    <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black via-black/40 to-transparent z-15"></div>
           <div className="absolute inset-0 bg-black/50 z-10"></div>
           <div className="relative z-20 max-w-5xl mx-auto text-center">
             <motion.div
@@ -353,75 +358,54 @@ const ProjectGallery: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* GEOMETRIC PATTERN - Background only, behind all content */}
-        <div className="fixed inset-0 z-[-1] pointer-events-none opacity-30">
-          {/* Large geometric shapes with #7f1d1d color */}
-          <div className="absolute top-10 left-10 w-80 h-80 border-2 border-[#7f1d1d]/50 rotate-45 rounded-3xl"></div>
-          <div className="absolute top-20 right-20 w-96 h-96 border-2 border-[#7f1d1d]/45 rotate-12 rounded-2xl"></div>
-          <div className="absolute bottom-20 left-1/4 w-72 h-72 border-2 border-[#7f1d1d]/55 -rotate-12 rounded-xl"></div>
-          <div className="absolute bottom-40 right-1/3 w-88 h-88 border-2 border-[#7f1d1d]/50 rotate-45 rounded-2xl"></div>
-          
-          {/* Medium geometric shapes */}
-          <div className="absolute top-1/3 left-1/2 w-64 h-64 border-2 border-[#7f1d1d]/45 rotate-30 rounded-lg"></div>
-          <div className="absolute top-60 right-1/4 w-56 h-56 border-2 border-[#7f1d1d]/50 -rotate-45 rounded-xl"></div>
-          <div className="absolute bottom-1/3 left-20 w-68 h-68 border-2 border-[#7f1d1d]/45 rotate-12 rounded-2xl"></div>
-          <div className="absolute top-40 left-1/3 w-52 h-52 border-2 border-[#7f1d1d]/50 -rotate-30 rounded-lg"></div>
-          
-          {/* Small geometric accents */}
-          <div className="absolute top-80 left-1/3 w-32 h-32 border-2 border-[#7f1d1d]/60 rotate-45 rounded-lg"></div>
-          <div className="absolute top-1/4 right-40 w-40 h-40 border-2 border-[#7f1d1d]/55 -rotate-30 rounded-xl"></div>
-          <div className="absolute bottom-60 right-10 w-36 h-36 border-2 border-[#7f1d1d]/50 rotate-60 rounded-lg"></div>
-          <div className="absolute top-96 left-20 w-28 h-28 border-2 border-[#7f1d1d]/55 rotate-15 rounded-md"></div>
-          
-          {/* Additional scattered shapes */}
-          <div className="absolute top-32 right-1/2 w-44 h-44 border-2 border-[#7f1d1d]/45 rotate-75 rounded-xl"></div>
-          <div className="absolute bottom-80 left-1/2 w-48 h-48 border-2 border-[#7f1d1d]/50 -rotate-20 rounded-lg"></div>
-          <div className="absolute top-1/2 right-20 w-60 h-60 border-2 border-[#7f1d1d]/45 rotate-50 rounded-2xl"></div>
-          
-          {/* Diagonal lines with #7f1d1d */}
-          <div className="absolute top-0 left-1/4 w-1 h-full bg-gradient-to-b from-transparent via-[#7f1d1d]/35 to-transparent rotate-12"></div>
-          <div className="absolute top-0 right-1/3 w-1 h-full bg-gradient-to-b from-transparent via-[#7f1d1d]/40 to-transparent -rotate-12"></div>
-          <div className="absolute top-0 left-1/2 w-1 h-full bg-gradient-to-b from-transparent via-[#7f1d1d]/30 to-transparent rotate-6"></div>
-          <div className="absolute top-0 right-1/2 w-1 h-full bg-gradient-to-b from-transparent via-[#7f1d1d]/35 to-transparent -rotate-8"></div>
-          
-          {/* Floating dots with #7f1d1d */}
-          <div className="absolute top-32 left-1/2 w-4 h-4 bg-[#7f1d1d]/70 rounded-full"></div>
-          <div className="absolute top-96 right-1/4 w-5 h-5 bg-[#7f1d1d]/60 rounded-full"></div>
-          <div className="absolute bottom-32 left-1/3 w-3 h-3 bg-[#7f1d1d]/65 rounded-full"></div>
-          <div className="absolute bottom-80 right-1/2 w-4 h-4 bg-[#7f1d1d]/70 rounded-full"></div>
-          <div className="absolute top-64 left-20 w-3 h-3 bg-[#7f1d1d]/60 rounded-full"></div>
-          <div className="absolute bottom-96 right-40 w-5 h-5 bg-[#7f1d1d]/65 rounded-full"></div>
-          
-          {/* Additional geometric elements for racing aesthetic */}
-          <div className="absolute top-20 left-1/2 w-24 h-2 bg-[#7f1d1d]/50 rotate-45"></div>
-          <div className="absolute bottom-40 right-1/4 w-32 h-2 bg-[#7f1d1d]/45 -rotate-30"></div>
-          <div className="absolute top-1/2 left-10 w-28 h-2 bg-[#7f1d1d]/50 rotate-60"></div>
-          <div className="absolute bottom-20 left-1/2 w-20 h-2 bg-[#7f1d1d]/45 -rotate-45"></div>
-          
-          {/* Corner accent shapes */}
-          <div className="absolute top-5 left-5 w-16 h-16 border-2 border-[#7f1d1d]/60 rotate-45"></div>
-          <div className="absolute top-5 right-5 w-20 h-20 border-2 border-[#7f1d1d]/55 -rotate-30"></div>
-          <div className="absolute bottom-5 left-5 w-18 h-18 border-2 border-[#7f1d1d]/60 rotate-60"></div>
-          <div className="absolute bottom-5 right-5 w-22 h-22 border-2 border-[#7f1d1d]/55 -rotate-15"></div>
-          
-          {/* Extra geometric elements for more coverage */}
-          <div className="absolute top-1/4 left-10 w-36 h-36 border-2 border-[#7f1d1d]/40 rotate-25 rounded-lg"></div>
-          <div className="absolute bottom-1/4 right-10 w-42 h-42 border-2 border-[#7f1d1d]/45 -rotate-35 rounded-xl"></div>
-          <div className="absolute top-3/4 left-1/3 w-38 h-38 border-2 border-[#7f1d1d]/40 rotate-55 rounded-md"></div>
-          <div className="absolute bottom-1/2 right-1/3 w-34 h-34 border-2 border-[#7f1d1d]/45 -rotate-25 rounded-lg"></div>
-          
-          {/* More diagonal accents */}
-          <div className="absolute top-1/3 left-0 w-1 h-2/3 bg-gradient-to-b from-transparent via-[#7f1d1d]/25 to-transparent rotate-15"></div>
-          <div className="absolute bottom-1/3 right-0 w-1 h-2/3 bg-gradient-to-t from-transparent via-[#7f1d1d]/30 to-transparent -rotate-15"></div>
-          
-          {/* Additional floating elements */}
-          <div className="absolute top-1/2 left-1/4 w-6 h-6 bg-[#7f1d1d]/50 rounded-full"></div>
-          <div className="absolute bottom-1/3 right-1/4 w-4 h-4 bg-[#7f1d1d]/55 rounded-full"></div>
-          <div className="absolute top-2/3 left-3/4 w-5 h-5 bg-[#7f1d1d]/50 rounded-full"></div>
-        </div>
-
-        {/* Project cards section */}
+        {/* Project cards section with geometric pattern */}
         <div className="px-2 sm:px-4 md:px-6 lg:px-8 pb-12 sm:pb-16 md:pb-20 lg:pb-24 relative z-10">
+          {/* Geometric Pattern Background */}
+          <div className="absolute inset-0 z-[0] pointer-events-none opacity-100">
+            <div className="absolute top-10 left-10 w-80 h-80 border-2 border-[#7f1d1d]/50 rotate-45 rounded-3xl"></div>
+            <div className="absolute top-20 right-20 w-96 h-96 border-2 border-[#7f1d1d]/45 rotate-12 rounded-2xl"></div>
+            <div className="absolute bottom-20 left-1/4 w-72 h-72 border-2 border-[#7f1d1d]/55 -rotate-12 rounded-xl"></div>
+            <div className="absolute bottom-40 right-1/3 w-88 h-88 border-2 border-[#7f1d1d]/50 rotate-45 rounded-2xl"></div>
+            <div className="absolute top-1/3 left-1/2 w-64 h-64 border-2 border-[#7f1d1d]/45 rotate-30 rounded-lg"></div>
+            <div className="absolute top-60 right-1/4 w-56 h-56 border-2 border-[#7f1d1d]/50 -rotate-45 rounded-xl"></div>
+            <div className="absolute bottom-1/3 left-20 w-68 h-68 border-2 border-[#7f1d1d]/45 rotate-12 rounded-2xl"></div>
+            <div className="absolute top-40 left-1/3 w-52 h-52 border-2 border-[#7f1d1d]/50 -rotate-30 rounded-lg"></div>
+            <div className="absolute top-80 left-1/3 w-32 h-32 border-2 border-[#7f1d1d]/60 rotate-45 rounded-lg"></div>
+            <div className="absolute top-1/4 right-40 w-40 h-40 border-2 border-[#7f1d1d]/55 -rotate-30 rounded-xl"></div>
+            <div className="absolute bottom-60 right-10 w-36 h-36 border-2 border-[#7f1d1d]/50 rotate-60 rounded-lg"></div>
+            <div className="absolute top-96 left-20 w-28 h-28 border-2 border-[#7f1d1d]/55 rotate-15 rounded-md"></div>
+            <div className="absolute top-32 right-1/2 w-44 h-44 border-2 border-[#7f1d1d]/45 rotate-75 rounded-xl"></div>
+            <div className="absolute bottom-80 left-1/2 w-48 h-48 border-2 border-[#7f1d1d]/50 -rotate-20 rounded-lg"></div>
+            <div className="absolute top-1/2 right-20 w-60 h-60 border-2 border-[#7f1d1d]/45 rotate-50 rounded-2xl"></div>
+            <div className="absolute top-0 left-1/4 w-1 h-full bg-gradient-to-b from-transparent via-[#7f1d1d]/35 to-transparent rotate-12"></div>
+            <div className="absolute top-0 right-1/3 w-1 h-full bg-gradient-to-b from-transparent via-[#7f1d1d]/40 to-transparent -rotate-12"></div>
+            <div className="absolute top-0 left-1/2 w-1 h-full bg-gradient-to-b from-transparent via-[#7f1d1d]/30 to-transparent rotate-6"></div>
+            <div className="absolute top-0 right-1/2 w-1 h-full bg-gradient-to-b from-transparent via-[#7f1d1d]/35 to-transparent -rotate-8"></div>
+            <div className="absolute top-32 left-1/2 w-4 h-4 bg-[#7f1d1d]/70 rounded-full"></div>
+            <div className="absolute top-96 right-1/4 w-5 h-5 bg-[#7f1d1d]/60 rounded-full"></div>
+            <div className="absolute bottom-32 left-1/3 w-3 h-3 bg-[#7f1d1d]/65 rounded-full"></div>
+            <div className="absolute bottom-80 right-1/2 w-4 h-4 bg-[#7f1d1d]/70 rounded-full"></div>
+            <div className="absolute top-64 left-20 w-3 h-3 bg-[#7f1d1d]/60 rounded-full"></div>
+            <div className="absolute bottom-96 right-40 w-5 h-5 bg-[#7f1d1d]/65 rounded-full"></div>
+            <div className="absolute top-20 left-1/2 w-24 h-2 bg-[#7f1d1d]/50 rotate-45"></div>
+            <div className="absolute bottom-40 right-1/4 w-32 h-2 bg-[#7f1d1d]/45 -rotate-30"></div>
+            <div className="absolute top-1/2 left-10 w-28 h-2 bg-[#7f1d1d]/50 rotate-60"></div>
+            <div className="absolute bottom-20 left-1/2 w-20 h-2 bg-[#7f1d1d]/45 -rotate-45"></div>
+            <div className="absolute top-5 left-5 w-16 h-16 border-2 border-[#7f1d1d]/60 rotate-45"></div>
+            <div className="absolute top-5 right-5 w-20 h-20 border-2 border-[#7f1d1d]/55 -rotate-30"></div>
+            <div className="absolute bottom-5 left-5 w-18 h-18 border-2 border-[#7f1d1d]/60 rotate-60"></div>
+            <div className="absolute bottom-5 right-5 w-22 h-22 border-2 border-[#7f1d1d]/55 -rotate-15"></div>
+            <div className="absolute top-1/4 left-10 w-36 h-36 border-2 border-[#7f1d1d]/40 rotate-25 rounded-lg"></div>
+            <div className="absolute bottom-1/4 right-10 w-42 h-42 border-2 border-[#7f1d1d]/45 -rotate-35 rounded-xl"></div>
+            <div className="absolute top-3/4 left-1/3 w-38 h-38 border-2 border-[#7f1d1d]/40 rotate-55 rounded-md"></div>
+            <div className="absolute bottom-1/2 right-1/3 w-34 h-34 border-2 border-[#7f1d1d]/45 -rotate-25 rounded-lg"></div>
+            <div className="absolute top-1/3 left-0 w-1 h-2/3 bg-gradient-to-b from-transparent via-[#7f1d1d]/25 to-transparent rotate-15"></div>
+            <div className="absolute bottom-1/3 right-0 w-1 h-2/3 bg-gradient-to-t from-transparent via-[#7f1d1d]/30 to-transparent -rotate-15"></div>
+            <div className="absolute top-1/2 left-1/4 w-6 h-6 bg-[#7f1d1d]/50 rounded-full"></div>
+            <div className="absolute bottom-1/3 right-1/4 w-4 h-4 bg-[#7f1d1d]/55 rounded-full"></div>
+            <div className="absolute top-2/3 left-3/4 w-5 h-5 bg-[#7f1d1d]/50 rounded-full"></div>
+          </div>
+
           <div className="max-w-full sm:max-w-2xl md:max-w-3xl lg:max-w-5xl mx-auto">
             <AnimatePresence initial={false}>
               <motion.div
@@ -655,7 +639,7 @@ const ProjectGallery: React.FC = () => {
           </div>
         </div>
 
-        {/* Footer section with solid background */}
+        {/* Footer section */}
         <motion.div
           className="border-t border-gray-800/30 bg-black relative z-10"
           initial={{ opacity: 0, y: 30 }}

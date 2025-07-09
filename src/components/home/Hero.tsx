@@ -1,8 +1,10 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 import BackGround from '../../assets/track3.png';
+import BackGround2 from '../../assets/track4.png';
 
 const buttonVariants = {
   hidden: {
@@ -44,13 +46,28 @@ const scrollVariants = {
 const Hero = () => {
   const { scrollY } = useScroll();
   const backgroundPositionY = useTransform(scrollY, [0, 300], ['50%', '30%']);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth < 768); // md breakpoint
+    };
+
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
+
+  const backgroundImage = isMobile ? BackGround2 : BackGround;
 
   return (
     <div className="relative min-h-screen flex items-center justify-start text-white overflow-hidden bg-black">
+      {/* Background Image */}
       <motion.div
         className="absolute inset-0 z-0 bg-cover bg-center md:bg-center sm:bg-center"
         style={{
-          backgroundImage: `url(${BackGround})`,
+          backgroundImage: `url(${backgroundImage})`,
           filter: 'brightness(1.0)',
           transformOrigin: 'center',
           backgroundPosition: 'center',
@@ -63,8 +80,11 @@ const Hero = () => {
         transition={{ duration: 1.2 }}
       />
 
-      {/* Adjusted gradient overlay for better title visibility on mobile */}
+      {/* Gradient overlay for better content visibility */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60 md:from-black/60 md:via-black/20 md:to-black/60 z-10" />
+
+      {/* Bottom fade effect for seamless transition */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black via-black/80 to-transparent z-15" />
 
       <div className="container-custom relative z-20 px-4 flex flex-col items-start gap-6 w-full pt-16">
         {/* Content placeholder (e.g., title or other elements) */}
@@ -95,7 +115,7 @@ const Hero = () => {
           }}
           variants={buttonVariants}
         >
-          <Link to="/projects" className="relative z-10">Explore Projects</Link>
+          <Link to="/projects/aethon" className="relative z-10">Explore Projects</Link>
           <div className="absolute inset-0 bg-red-700 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </motion.button>
 
@@ -108,7 +128,7 @@ const Hero = () => {
           }}
           variants={buttonVariants}
         >
-          <Link to="/alumni" className="relative z-10 group-hover:text-black transition-colors duration-300">Meet Our Team</Link>
+          <Link to="/about" className="relative z-10 group-hover:text-black transition-colors duration-300">Meet The Club</Link>
           <div className="absolute inset-0 bg-white rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </motion.button>
       </motion.div>

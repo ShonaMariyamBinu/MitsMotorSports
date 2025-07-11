@@ -146,13 +146,13 @@ const TeamSection = () => {
             />
             
             <DepartmentSection 
-              title="HV" 
+              title="HV(High Voltage)" 
               members={teamData.hv} 
               gridCols="grid-cols-1 sm:grid-cols-2"
             />
             
             <DepartmentSection 
-              title="LV" 
+              title="LV(Low Voltage)" 
               members={teamData.lv} 
               gridCols="grid-cols-1 sm:grid-cols-2 md:grid-cols-3"
             />

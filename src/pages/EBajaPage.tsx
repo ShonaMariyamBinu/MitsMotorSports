@@ -99,21 +99,21 @@ const App: React.FC = () => {
     // Third Row
     {
       name: 'Dilshad',
-      role: 'HV Head',
+      role: 'HV (High Voltage) Head',
       image: dilshad,
       linkedin: 'https://linkedin.com',
       email: 'dilshadmuhammed.9153@gmail.com',
     },
     {
       name: 'Remiel',
-      role: 'LV Head',
+      role: 'LV (Low Voltage) Head',
       image:remiel,
       linkedin: 'https://linkedin.com',
       email: 'remielgeorgevj@gmail.com ',
     },
     {
       name: 'Aswin Lal',
-      role: 'Accumulator & BMS Head',
+      role: 'Accumulator & BMS (Battery Management System) Head',
       image: aswinlal,
       linkedin: 'https://linkedin.com',
       email: 'ksaswinlal@gmail.com',
@@ -637,9 +637,10 @@ const App: React.FC = () => {
                 rows.push(
                   <div
                     key={i}
-                    className={isLastRowWithThree
-                      ? "flex justify-center space-x-44 gap-y-10 mb-16"
-                      : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8"
+                    className={
+                      isLastRowWithThree
+                        ? "flex justify-center space-x-8 sm:space-x-16 md:space-x-32 lg:space-x-44 gap-y-10 mb-16 flex-wrap"
+                        : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8 justify-items-center"
                     }
                   >
                     {chunk.map((member, index) => (
@@ -676,17 +677,17 @@ const App: React.FC = () => {
                 />
                 
                 <DepartmentSection 
-                  title="HV" 
+                  title="HV (High Voltage)" 
                   members={departmentTeams.hv}
                 />
                 
                 <DepartmentSection 
-                  title="LV" 
+                  title="LV (Low Voltage)" 
                   members={departmentTeams.lv}
                 />
                 
                 <DepartmentSection 
-                  title="Accumulators & BMS" 
+                  title="Accumulators & BMS (Battery Management System)" 
                   members={departmentTeams.accumulatorsBms}
                 />
               </div>

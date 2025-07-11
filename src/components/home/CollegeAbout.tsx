@@ -148,7 +148,7 @@ const CollegeAbout = () => {
             Muthoot Institute of Technology and Science
           </h2>
           <p
-            className="text-gray-300 text-lg leading-relaxed drop-shadow-sm font-poppins"
+            className="text-gray-300 text-l leading-relaxed drop-shadow-sm font-poppins"
             style={{ fontFamily: 'Poppins, sans-serif' }}
           >
             A premier institute dedicated to fostering innovation, academic excellence, and

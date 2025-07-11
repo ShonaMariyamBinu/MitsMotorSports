@@ -33,7 +33,10 @@ const ProjectCard = ({ title, description, image, link, index }: ProjectCardProp
 
       <div className={`p-6 text-white ${!image ? 'text-center' : ''}`}>
         <h3 className="text-3xl font-extrabold mb-3 drop-shadow-md">{title}</h3>
-        <p className="text-gray-300 text-xl mb-5 drop-shadow-sm">{description}</p>
+        <p className="text-gray-300 text-sm sm:text-base md:text-lg lg:text-xl mb-5 drop-shadow-sm">
+  {description}
+</p>
+
         <div className="mt-4">
           <Link
             to={link}

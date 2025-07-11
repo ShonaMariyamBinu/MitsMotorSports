@@ -11,7 +11,7 @@ import img6 from '../assets/img6.jpg';
 import img7 from '../assets/img7.jpg';
 import img8 from '../assets/img8.jpg';
 import img9 from '../assets/img9.jpg';
-import fkdcImg1 from '../assets/fkdc pic1.jpg';
+import fkdcImg1 from '../assets/fkdc pic1.png';
 import fkdcImg2 from '../assets/fkdc pic2.jpg';
 import fkdcImg3 from '../assets/fkdc pic3.jpg';
 import fkdcImg4 from '../assets/fkdc pic4.jpg';
@@ -19,7 +19,6 @@ import fkdcImg5 from '../assets/fkdc pic5.jpg';
 import fkdcImg6 from '../assets/fkdc pic6.jpg';
 import fkdcImg7 from '../assets/fkdc pic7.jpg';
 import fkdcImg8 from '../assets/fkdc pic8.jpg';
-import fkdcImg9 from '../assets/fkdc pic9.jpg';
 import fkdcImg10 from '../assets/fkdc pic10.jpg';
 
 const ProjectGallery: React.FC = () => {
@@ -45,14 +44,14 @@ const ProjectGallery: React.FC = () => {
   const goKartProjects = [
     {
       id: 1,
-      title: "MITS Go-Kart Project",
-      image: img1,
+      title: "Brains, Grit & Grease",
+      image: img5,
       featured: true,
       fontColor: "text-white",
       margin: "mx-2 my-6",
       verticalPosition: "top-8",
       icon: Trophy,
-      description: "Engineering Excellence Unleashed",
+      description: "Passion Fuels Innovation",
       descriptionFontColor: "text-white",
     },
     {
@@ -90,13 +89,13 @@ const ProjectGallery: React.FC = () => {
     },
     {
       id: 5,
-      title: "Brains, Grit & Grease",
-      image: img5,
+      title: "MITS Go-Kart Project",
+      image: img1,
       fontColor: "text-white",
       margin: "mx-2 my-6",
       verticalPosition: "bottom-6",
       icon: Zap,
-      description: "Passion Fuels Innovation",
+      description: "Engineering Excellence Unleashed",
       descriptionFontColor: "text-white",
     }
   ];
@@ -105,25 +104,25 @@ const ProjectGallery: React.FC = () => {
     {
       id: 1,
       title: "FKDC Season 7 Project",
-      image: fkdcImg1,
+      image: fkdcImg10,
       featured: true,
-      fontColor: "text-black",
+      fontColor: "text-white",
       margin: "mx-2 my-6",
       verticalPosition: "top-8",
       icon: Trophy,
-      description: "Formula Kart Design Excellence",
-      descriptionFontColor: "text-black",
+      description: "Driven by Passion",
+      descriptionFontColor: "text-white",
     },
     {
       id: 2,
       title: "To the Track",
       image: fkdcImg2,
-      fontColor: "text-black",
+      fontColor: "text-white",
       margin: "mx-2 my-6",
       verticalPosition: "top-2.5",
       icon: Target,
       description: "Hands that build, hands that push",
-      descriptionFontColor: "text-black",
+      descriptionFontColor: "text-white",
     },
     {
       id: 3,
@@ -150,12 +149,12 @@ const ProjectGallery: React.FC = () => {
     {
       id: 5,
       title: "FKDC Passion",
-      image: fkdcImg10,
+      image: fkdcImg1,
       fontColor: "text-white",
       margin: "mx-2 my-6",
       verticalPosition: "bottom-6",
       icon: Zap,
-      description: "Driven by Passion",
+      description: "Formula Kart Design Excellence",
       descriptionFontColor: "text-white",
     }
   ];

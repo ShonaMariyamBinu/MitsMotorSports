@@ -193,7 +193,7 @@ const About = () => {
         <section className="relative z-20 min-h-screen flex items-center justify-center">
           <div className="text-center px-6">
             <motion.h1
-              className="mt-20 text-6xl md:text-8xl font-bold mb-6 text-white drop-shadow-2xl"
+              className="mt-20 text-5xl md:text-8xl font-bold mb-6 text-white drop-shadow-2xl"
               variants={containerVariants}
               initial="hidden"
               animate="visible"
@@ -209,7 +209,7 @@ const About = () => {
               ))}
             </motion.h1>
             <div className="w-32 h-1 bg-gradient-to-r from-[#7f1d1d] to-transparent mx-auto mb-8"></div>
-            <p className="text-xl md:text-2xl text-gray-200 max-w-2xl mx-auto leading-relaxed drop-shadow-lg mb-8">
+            <p className="text-l md:text-2xl text-gray-200 max-w-2xl mx-auto leading-relaxed drop-shadow-lg mb-8">
               Discover the passion, innovation, and excellence that drives MITS Motorsports
             </p>
             <div className="flex justify-center items-center py-10">
@@ -228,7 +228,7 @@ const About = () => {
             {/* About Section */}
             <div className="mb-20">
               <motion.h2
-                className="text-4xl md:text-5xl font-extrabold mb-8 text-center text-white drop-shadow-lg"
+                className="text-xl md:text-5xl font-extrabold mb-8 text-center text-white drop-shadow-lg"
                 variants={containerVariants}
                 initial="hidden"
                 whileInView="visible"
@@ -245,11 +245,11 @@ const About = () => {
                 ))}
               </motion.h2>
               <div className="bg-black/60 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-[#7f1d1d]/30">
-                <p className="text-gray-200 text-lg md:text-xl leading-relaxed mb-8">
+                <p className="text-gray-200 text-l md:text-xl leading-relaxed mb-8">
                   MITS Motorsports is a student-run organization that designs, builds, and races vehicles for various competitions. Our team is composed of passionate engineering students dedicated to applying theoretical knowledge to practical challenges.
                 </p>
                 <h3 className="text-3xl md:text-4xl font-bold mb-6 text-white drop-shadow-md">Our Mission</h3>
-                <p className="text-gray-200 text-lg md:text-xl leading-relaxed mb-12">
+                <p className="text-gray-200 text-l md:text-xl leading-relaxed mb-12">
                   To provide students with hands-on experience in automotive engineering and create innovative solutions that push the boundaries of motorsport technology. We aim to nurture the next generation of engineering talent through practical application of classroom knowledge.
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -288,7 +288,7 @@ const About = () => {
                   </motion.span>
                 ))}
               </motion.h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="grid grid-cols-1 justify-items-center md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {clubLeads.map((member, index) => (
                   <div
                     key={index}

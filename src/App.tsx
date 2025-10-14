@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+  useNavigate,
+} from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 
 // Pages
@@ -10,6 +16,7 @@ import AlumniPage from './pages/AlumniPage';
 import GalleryPage from './pages/ProjectGallery';
 import LegacyPage from './pages/LegacyPage';
 import AboutPage from './pages/AboutPage';
+import SponsorsPage from './pages/sponsersPage';
 
 // Components
 import Navbar from './components/layout/Navbar';
@@ -20,23 +27,18 @@ function AppContent() {
   const [showAnimation, setShowAnimation] = useState(false);
   const [isInitialLoad, setIsInitialLoad] = useState(true);
   const location = useLocation();
-  const navigate = useNavigate();
 
-  // Check if this is the initial load and if we should show animation
   useEffect(() => {
-    // Show animation every time user visits the homepage
     if (location.pathname === '/') {
       setShowAnimation(true);
     } else {
       setShowAnimation(false);
     }
-    
+
     setIsInitialLoad(false);
   }, [location.pathname]);
 
-  // Scroll to top on route change
   useEffect(() => {
-    // Only scroll to top when animation is not showing
     if (!showAnimation) {
       window.scrollTo(0, 0);
     }
@@ -44,39 +46,69 @@ function AppContent() {
 
   const handleAnimationComplete = () => {
     setShowAnimation(false);
-    // Scroll to top after animation completes on homepage
     window.scrollTo(0, 0);
   };
 
-  // Don't render anything during initial load check
   if (isInitialLoad) {
-    return <div className="min-h-screen bg-gray-900" />;
+    return <div className="min-h-screen bg-black" />;
   }
 
   return (
-    <div>
-      {showAnimation ? (
-        <LogoAnimation onAnimationComplete={handleAnimationComplete} />
-      ) : (
-        <div className="flex flex-col min-h-screen">
-          <Navbar />
-          <main className="flex-grow">
-            <AnimatePresence mode="wait">
-              <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/projects/aethon" element={<AethonPage />} />
-                <Route path="/projects/ebaja" element={<EBajaPage />} />
-                <Route path="/alumni" element={<AlumniPage />} />
-                <Route path="/gallery" element={<GalleryPage />} />
-                <Route path="/legacy" element={<LegacyPage />} />
-                <Route path="/about" element={<AboutPage />} />
-              </Routes>
-            </AnimatePresence>
-          </main>
-          <Footer />
-        </div>
-      )}
-    </div>
+    <>
+      {/* Global tight layout styling */}
+      <style>{`
+        html, body, #root {
+          margin: 0;
+          padding: 0;
+          width: 100%;
+          background-color: black;
+          color: white;
+          font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+          overflow-y: auto;
+        }
+
+        ::-webkit-scrollbar {
+          width: 8px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+          background-color: #7f1d1d;
+          border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+          background: #1a1a1a;
+        }
+      `}</style>
+
+      <div className="w-full bg-black text-white">
+        {showAnimation ? (
+          <LogoAnimation onAnimationComplete={handleAnimationComplete} />
+        ) : (
+          <div className="flex flex-col min-h-screen">
+            <Navbar />
+            <main className="flex-grow">
+              <AnimatePresence mode="wait">
+                <Routes>
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/projects/aethon" element={<AethonPage />} />
+                  <Route path="/projects/ebaja" element={<EBajaPage />} />
+                  <Route path="/alumni" element={<AlumniPage />} />
+                  <Route path="/gallery" element={<GalleryPage />} />
+                  <Route path="/legacy" element={<LegacyPage />} />
+                  <Route path="/about" element={<AboutPage />} />
+                  <Route path="/sponsors" element={<SponsorsPage />} />
+                </Routes>
+              </AnimatePresence>
+            </main>
+            <Footer />
+          </div>
+        )}
+      </div>
+    </>
   );
 }
 

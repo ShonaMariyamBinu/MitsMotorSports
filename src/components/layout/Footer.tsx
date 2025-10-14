@@ -6,16 +6,88 @@ const Footer = () => {
     <footer className="bg-black text-white pt-1 sm:pt-2 md:pt-3 pb-1 sm:pb-2 md:pb-3 opacity-100 isolate border-t border-b border-white">
       <div className="container-custom px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mb-3 sm:mb-4 md:mb-6">
-          <div className="flex justify-center items-center h-full border-r border-white md:border-r-0">
-            <div className="flex flex-col items-center">
-              <img
-                src="/faviconLogo (1).png"
-                alt="MITS Motorsports Logo"
-                className="h-40 sm:h-48 md:h-56 lg:h-64 w-auto"
-              />
+          {/* Logo and Web Designers */}
+          <div className="flex flex-col items-center justify-center h-full border-r border-white md:border-r-0 space-y-6">
+            <img
+              src="/faviconLogo (1).png"
+              alt="MITS Motorsports Logo"
+              className="h-32 sm:h-36 md:h-40 lg:h-44 w-auto"
+            />
+            
+            {/* Web Designers Section */}
+            <div className="text-center">
+              <h4 className="text-base sm:text-lg font-semibold mb-4 text-primary-400">Web Designers</h4>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+                {/* Aksa */}
+                <div className="group cursor-pointer">
+                  <a
+                    href="https://www.linkedin.com/in/aksa-profile" // Replace with actual LinkedIn URL
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex flex-col items-center space-y-2"
+                  >
+                    <div className="relative">
+                      <img
+                        src="/team/Aksa.jpg"
+                        alt="Aksa"
+                        className="w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 rounded-full border-2 border-primary-500 object-cover group-hover:border-primary-400 transition-all duration-300 group-hover:scale-105 shadow-lg group-hover:shadow-xl"
+                      />
+                      <div className="absolute inset-0 rounded-full bg-gradient-to-t from-primary-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                    <span className="text-xs sm:text-sm font-medium text-secondary-300 group-hover:text-white transition-colors duration-300">
+                      Aksa
+                    </span>
+                  </a>
+                </div>
+
+                {/* Sethulakshmi */}
+                <div className="group cursor-pointer">
+                  <a
+                    href="https://www.linkedin.com/in/sethulakshmi-profile" // Replace with actual LinkedIn URL
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex flex-col items-center space-y-2"
+                  >
+                    <div className="relative">
+                      <img
+                        src="/team/Sethu.jpg"
+                        alt="Sethulakshmi"
+                        className="w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 rounded-full border-2 border-primary-500 object-cover group-hover:border-primary-400 transition-all duration-300 group-hover:scale-105 shadow-lg group-hover:shadow-xl"
+                      />
+                      <div className="absolute inset-0 rounded-full bg-gradient-to-t from-primary-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                    <span className="text-xs sm:text-sm font-medium text-secondary-300 group-hover:text-white transition-colors duration-300">
+                      Sethulakshmi
+                    </span>
+                  </a>
+                </div>
+
+                {/* Shona */}
+                <div className="group cursor-pointer">
+                  <a
+                    href="https://www.linkedin.com/in/shona-profile" // Replace with actual LinkedIn URL
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex flex-col items-center space-y-2"
+                  >
+                    <div className="relative">
+                      <img
+                        src="/team/Shonaaa.jpg"
+                        alt="Shona"
+                        className="w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 rounded-full border-2 border-primary-500 object-cover group-hover:border-primary-400 transition-all duration-300 group-hover:scale-105 shadow-lg group-hover:shadow-xl"
+                      />
+                      <div className="absolute inset-0 rounded-full bg-gradient-to-t from-primary-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                    <span className="text-xs sm:text-sm font-medium text-secondary-300 group-hover:text-white transition-colors duration-300">
+                      Shona
+                    </span>
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
 
+          {/* Quick Links */}
           <div className="border-r border-white sm:border-r-0 md:border-r">
             <h3 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6">Quick Links</h3>
             <ul className="space-y-2 sm:space-y-3">
@@ -42,6 +114,7 @@ const Footer = () => {
             </ul>
           </div>
 
+          {/* Contact Us */}
           <div className="border-r border-white">
             <h3 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6">Contact Us</h3>
             <ul className="space-y-3 sm:space-y-4">
@@ -72,35 +145,36 @@ const Footer = () => {
             </ul>
           </div>
 
+          {/* Map Location */}
           <div className="flex justify-center">
             <div>
               <h3 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6">Our Location</h3>
               <div className="relative w-full max-w-[10rem] sm:max-w-[12rem] md:max-w-[14rem] aspect-square rounded-lg overflow-hidden shadow-md mx-auto">
-  <iframe
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d245.60243022878657!2d76.40851814354461!3d9.963972635525636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0874de563bc58b%3A0xde7ecbfa110cfbda!2sMuthoot%20Institute%20of%20Technology%20%26%20Science!5e0!3m2!1sen!2sin!4v1752044708058!5m2!1sen!2sin"
-    width="100%"
-    height="100%"
-    style={{ border: 0 }}
-    allowFullScreen={true}
-    loading="lazy"
-    referrerPolicy="no-referrer-when-downgrade"
-    title="MITS Engineering College Location"
-  />
-  <a
-    href="https://maps.app.goo.gl/zgiep9rD8viKp1KU9"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="absolute inset-0"
-    aria-label="Open MITS on Google Maps"
-  >
-    <span className="sr-only">Open map in Google Maps</span>
-  </a>
-</div>
-
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d245.60243022878657!2d76.40851814354461!3d9.963972635525636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0874de563bc58b%3A0xde7ecbfa110cfbda!2sMuthoot%20Institute%20of%20Technology%20%26%20Science!5e0!3m2!1sen!2sin!4v1752044708058!5m2!1sen!2sin"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen={true}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="MITS Engineering College Location"
+                />
+                <a
+                  href="https://maps.app.goo.gl/zgiep9rD8viKp1KU9"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute inset-0"
+                  aria-label="Open MITS on Google Maps"
+                >
+                  <span className="sr-only">Open map in Google Maps</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
 
+        {/* Social Icons */}
         <div className="flex justify-center gap-4 pb-3">
           <a
             href="https://www.instagram.com/mits_motorsports/"

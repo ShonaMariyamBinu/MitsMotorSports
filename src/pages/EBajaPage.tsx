@@ -10,7 +10,7 @@ import albin from '../components/ebaja/image/Albin.jpg';
 import alan from '../components/ebaja/image/Alan.jpg';
 import abner from '../components/ebaja/image/Abner.jpg';
 import dilshad from '../components/ebaja/image/Dilshad.jpg';
-import remiel from '../components/ebaja/image/Remiel.jpg';
+import remiel from '../assets/Remiel.jpg';
 import aswinlal from '../components/ebaja/image/Aswin.jpeg';
 import madhav from '../components/ebaja/image/Madhav.jpg';
 import adarsh from '../components/ebaja/image/Adarsh.jpg';

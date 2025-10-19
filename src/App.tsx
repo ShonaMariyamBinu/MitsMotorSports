@@ -16,7 +16,7 @@ import AlumniPage from './pages/AlumniPage';
 import GalleryPage from './pages/ProjectGallery';
 import LegacyPage from './pages/LegacyPage';
 import AboutPage from './pages/AboutPage';
-import SponsorsPage from './pages/sponsersPage';
+import SponsorsPage from './pages/SponsersPage';
 
 // Components
 import Navbar from './components/layout/Navbar';

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import backgroundImage from "../assets/pg1.png"; 
 
 // Original Carousel 1 Images
-import a1 from "../assets/a1.jpg";
+import a1 from "../components/ebaja/image/a1.jpg";
 import a2 from "../assets/a2.jpg";
 import a3 from "../assets/a3.jpg";
 

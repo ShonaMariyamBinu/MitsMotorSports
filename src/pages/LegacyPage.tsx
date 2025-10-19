@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
-// Import your background video file here
-import backgroundVideo from "../assets/motor.mp4"; 
+// Import your background image
+import backgroundImage from "../assets/pg1.png"; 
 
 // Original Carousel 1 Images
 import a1 from "../assets/a1.jpg";
@@ -49,56 +49,52 @@ export default function EBajaPage() {
     images2025[(centerIndex2025 + offset + images2025.length) % images2025.length];
 
   return (
-    <div style={{ position: "relative", minHeight: "100vh", overflowX: "hidden" }}>
-      <video
-        autoPlay
-        loop
-        muted
-        style={{
-          position: "fixed",
-          inset: 0,
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          zIndex: -2,
-        }}
-        src={backgroundVideo}
-      />
-      
+  <div
+    style={{
+      position: "relative",
+      minHeight: "100vh",
+      overflowX: "hidden",
+      backgroundImage: `url(${backgroundImage})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+      backgroundAttachment: "fixed",
+    }}
+  >
+      {/* Overlay for darkening the background */}
       <div
         style={{
           position: 'fixed',
           inset: 0,
-          backgroundColor: 'rgba(0, 0, 0, 0.7)',
+          backgroundColor: 'rgba(0, 0, 0, 0.9)',
           zIndex: -1,
         }}
-      ></div>
+      />
 
-      {/* Title container no longer takes up the full screen height */}
+      {/* Title container */}
       <div
         style={{
           textAlign: "center",
-          paddingTop: '48vh', // Pushes the title down from the top
-          paddingBottom: '1vh', // Creates space between title and timeline
+          paddingTop: '48vh',
+          paddingBottom: '1vh',
           opacity: titleVisible ? 1 : 0,
           transition: "opacity 0.8s ease",
         }}
       >
         <h1
-  style={{
-    fontSize: "10vw",
-    fontWeight: "bold",
-    // The main color property is removed from here
-    textShadow: 
-      "-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, 5px 5px 15px rgba(0, 0, 0, 1)",
-  }}
->
-  <span style={{ color: "white" }}>Our</span>{' '}
-  <span style={{ color: "#7f1d1d" }}>Legacy</span>
-</h1>
+          style={{
+            fontSize: "10vw",
+            fontWeight: "bold",
+            textShadow: 
+              "-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, 5px 5px 15px rgba(0, 0, 0, 1)",
+          }}
+        >
+          <span style={{ color: "white" }}>Our</span>{' '}
+          <span style={{ color: "#ebe7e7ff" }}>Legacy</span>
+        </h1>
       </div>
 
-      {/* Timeline container now has its negative margin removed */}
+      {/* Timeline container */}
       <div style={{ position: "relative", height: "160px" }}>
         <div
           style={{

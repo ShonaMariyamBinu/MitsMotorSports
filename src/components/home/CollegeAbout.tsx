@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import MitsLogo from '../../assets/MitsLogo.png';
+import MitsLogo from '../../assets/MITS_Logo_updated-removebg-preview.png';
 import AboutBg from '../../assets/Mitsbg.jpg';
 
 const containerVariants = {

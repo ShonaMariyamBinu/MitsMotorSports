@@ -1,6 +1,10 @@
 import React from 'react';
-import Logo from '../assets/logo3.png'; // adjust path
+import Logo from '../assets/Muthoot_Group.png'; // adjust path
 import { motion } from 'framer-motion';
+import Z1 from '../assets/z1.jpg';
+import Z2 from '../assets/z2.jpg';
+import Z3 from '../assets/z3.png';
+
 
 const Sponsors: React.FC = () => {
   const containerVariants = {
@@ -65,31 +69,53 @@ const Sponsors: React.FC = () => {
 
       {/* CONTENT */}
       <section className="relative z-10 flex flex-col items-center justify-start min-h-screen text-center px-6 pt-32">
-        <motion.h1
-          className="text-5xl md:text-8xl font-extrabold mb-2"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          {Array.from("SPONSORS").map((char, i) => (
-            <motion.span key={i} variants={letterVariants} className="inline-block">
-              {char}
-            </motion.span>
-          ))}
-        </motion.h1>
+  <motion.h1
+    className="text-5xl md:text-8xl font-extrabold mb-2"
+    variants={containerVariants}
+    initial="hidden"
+    animate="visible"
+  >
+    {Array.from("SPONSORS").map((char, i) => (
+      <motion.span key={i} variants={letterVariants} className="inline-block">
+        {char}
+      </motion.span>
+    ))}
+  </motion.h1>
 
-        <p className="text-lg md:text-2xl text-gray-300 max-w-3xl mb-10 px-4">
-          With a legacy spanning over 800 years, The Muthoot Group stands as a symbol of trust, service, and commitment.
-        </p>
+  <p className="text-lg md:text-2xl text-gray-300 max-w-3xl mb-10 px-4">
+    With a legacy spanning over years, The Muthoot Group stands as a symbol of trust, service, and commitment.
+  </p>
 
-        <div className="w-full flex justify-center mt-4">
-          <img
-            src={Logo}
-            alt="Sponsor Logo"
-            className="w-[400px] md:w-[600px] lg:w-[700px] object-contain drop-shadow-[0_0_30px_#7f1d1d]/90"
-          />
-        </div>
-      </section>
+  {/* Muthoot logo */}
+  <div className="w-full flex justify-center mt-4">
+    <img
+      src={Logo}
+      alt="Sponsor Logo"
+      className="w-[400px] md:w-[600px] lg:w-[700px] object-contain drop-shadow-[0_0_30px_#7f1d1d]/90"
+    />
+  </div>
+
+ {/* Additional sponsors below Muthoot */}
+<div className="w-full flex flex-col items-center mt-12 pb-20">
+  <img
+    src={Z1}
+    alt="Sponsor Z1"
+    className="w-40 md:w-60 lg:w-64 object-contain mb-20" // More space after first
+  />
+  <img
+    src={Z2}
+    alt="Sponsor Z2"
+    className="w-40 md:w-60 lg:w-64 object-contain mb-32" // More space after second
+  />
+  <img
+    src={Z3}
+    alt="Sponsor Z3"
+    className="w-40 md:w-60 lg:w-64 object-contain"
+  />
+</div>
+
+</section>
+
     </div>
   );
 };

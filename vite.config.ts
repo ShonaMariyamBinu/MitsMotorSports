@@ -6,5 +6,5 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
-  base: '/',  // always root for easy deployment
+  base: '/MitsMotorSports/', // MUST match your GitHub repo name
 });
